@@ -31,12 +31,19 @@ wss.on("connection", (socket) => {
   sockets.push(socket);
   console.log("connected to browser");
   socket.on("close", () => console.log("disconnected from browser"));
-
+  socket["nickname"] = "anon";
   //브라우저로부터 메세지 받기
   socket.on("message", (message) => {
     const messageObject = JSON.parse(message);
-
-    sockets.forEach((s) => s.send());
+    switch (messageObject.type) {
+      case "nickName":
+        socket["nickname"] = messageObject.payload;
+        break;
+      case "message":
+        sockets.forEach((aSocket) =>
+          aSocket.send(socket.nickname + ":" + messageObject.payload)
+        );
+    }
   });
 });
 server.listen(3000, handleListen);
