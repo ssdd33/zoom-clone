@@ -15,10 +15,10 @@ const handleListen = () => console.log(`Listening on http://localhost:3000`);
 const server = http.createServer(app);
 
 /*
-http 서버 위에 webSocket 서버 만들기: 
+http 서버 위에 webSocket 서버 만들기:
 인자를 전달하는 것이 필수는 아님(ws서버만 구동하도록 만들수도 있음),
  이렇게 인자로 http서버를 전달해 줌으로써 http서버, webSocket서버 둘 다 돌릴 수 있다.
--> localhost는 동일한 포트에서 http,ws request 두개를 다 처리할 수 있다. 
+-> localhost는 동일한 포트에서 http,ws request 두개를 다 처리할 수 있다.
 */
 const wss = new WebSocket.Server({ server });
 
