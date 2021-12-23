@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Yoom
+        <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    body 
+    header 
+        h1 YOOM
+    main
+        div#welcome
+            form
+                input(type="text",placeholder="room name",required)
+                button enter room
+        div#call(width="100vh")
+            h3
+            span#myStream
+                video#myFace(autoplay,playsinline,width="400",height="400")
+                select#cameras
+                    option(value=true) test1
+                button#camera Turn Camera Off
+                button#mute Mute
+            span#peerStream
+                video#peerFace(autoplay,playsinline,width="400",height="400")
+            span#chat
+                ul
+                form#message
+                    input(type="text",placeholder="message",required)
+                    button Send
+    script(src="/socket.io/socket.io.js")
+    script(src="/public/js/app.js")
