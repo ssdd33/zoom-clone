@@ -101,14 +101,7 @@ const handleIce = (data) => {
 };
 const handleAddStream = (data) => {
   console.log("addStream event fired");
-  // const newVideo = document.createElement("video");
-  // newVideo.setAttribute("autoplay", "");
-  // newVideo.setAttribute("playsinline", "");
-  // newVideo.attributes.width = "400";
-  // newVideo.attributes.height = "400";
-  // newVideo.srcObject = data.stream;
-  // call.appendChild(newVideo);
-  // console.log(newVideo.attributes);
+
   const peerFace = document.getElementById("peerFace");
   peerFace.srcObject = data.stream;
 };
@@ -116,13 +109,7 @@ const makeConnection = () => {
   myPeerConnection = new RTCPeerConnection({
     iceServers: [
       {
-        urls: [
-          "stun.l.google.com:19302",
-          "stun1.l.google.com:19302",
-          "stun2.l.google.com:19302",
-          "stun3.l.google.com:19302",
-          "stun4.l.google.com:19302",
-        ],
+        urls: ["stun:stun.l.google.com:19302", "stun:stun2.l.google.com:19305"],
       },
     ],
   });
